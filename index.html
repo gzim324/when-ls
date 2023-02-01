@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Kiedy LS?</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      h1 {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+      h2 {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kiedy LS?</h1>
+      <div class="col-lg-4 col-md-4 offset-lg-4 offset-md-4">
+        <form>
+          <div class="mb-3">
+            <label for="episodeInput" class="form-label">Episode</label>
+            <input type="number" class="form-control" id="episodeInput" placeholder="1900">
+          </div>
+          <button type="button" class="btn btn-primary" onclick="compute()">Submit</button>
+        </form>
+      </div>  
+
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+      function compute() {
+        let firstEpisode = 1900
+        if (episodeNumberInput = episodeInput.value) {
+
+          if (episodeNumberInput < firstEpisode) {
+            throw new Error('Daj jakiś późniejszy odcinek. Taki z przyszłości')
+          }
+
+          var episodeDifference = episodeNumberInput - firstEpisode
+          var newDate = new Date('01-13-2023')
+
+          while (episodeDifference > 0) {
+            newDate.setDate(newDate.getDate() + 1)
+            if ((newDate.getDay() !== 6) && (newDate.getDay() !== 0)) {
+              episodeDifference--
+            }
+          }
+
+           var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+          document.getElementById("result").innerHTML = newDate.getDate() + " " + months[newDate.getMonth()] + " " + newDate.getFullYear()
+        }
+      }
+
+    </script>
+  </body>
+</html>
+
+
